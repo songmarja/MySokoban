@@ -1,0 +1,53 @@
+
+
+html, body{
+    background-color: rgb(189, 189, 185);
+}
+body >h1{
+    text-align:center;
+}
+.playingArea{
+    background-color: bisque;
+    margin:2em;
+    place-items: center;
+    position:relative;
+}
+.tile-element{
+    width: 50px;
+    height: 50px;
+    /* position: absolute; */
+}
+
+.tile-goal{
+    font-size: 1.5em;
+}
+.tile-space {
+   width: 50px;
+   height: 50px;
+}
+.tile-wall img{
+    width:50px;
+    height: 50px;
+}
+.entity-block img{
+    width: 50px;
+    height: 50px;
+}
+.entity-player{
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+.entity-player img{
+    width: 50px;
+    height:50px;
+    /* position: absolute; */
+}
+.entity-player img:hover{
+   color: hsl(62, 87%, 76%);
+   opacity: 0.6;
+}
+
+
+
