@@ -10,8 +10,8 @@ let relativeBlockPos = { x: 0, y: 0 };
 function checkIfOriginalTileClassIsGoal(currentPlayerPos)
 {
     let originalTileClass = tileMap01.mapGrid[currentPlayerPos.y] [currentPlayerPos.x];
-    console.log("Original");
-    console.log(originalTileClass);
+    // console.log("Original");
+    // console.log(originalTileClass);
     if (originalTileClass == "G")
     {
         return true;
@@ -24,7 +24,7 @@ function checkIfOriginalTileClassIsGoal(currentPlayerPos)
 
 function movePlayer(currentPlayerPos,  nextPlayerPos)
 {
-    console.log("movePlayer started");
+    // console.log("movePlayer started");
     let originalTileClassIsGforCurrentPos = checkIfOriginalTileClassIsGoal(currentPlayerPos);
     let originalTileClassIsGforNextPos  = checkIfOriginalTileClassIsGoal(nextPlayerPos);
     
@@ -63,10 +63,6 @@ function movePlayer(currentPlayerPos,  nextPlayerPos)
 
     // Going down in the tree ...
     let nextPlayerStringTag = nextPlayerPosTag.childNodes[0];
-    // Update current player position - class tags
-
-    // let currentPlayerPosTag = document.getElementsByClassName("entity-player");
-    // let currentPlayerImgTag = currentPlayerPosTag.childNodes[0];
 
     nextPlayerPosTag.removeChild(nextPlayerStringTag);
     nextPlayerPosTag.appendChild(currentPlayerImgTag);
@@ -86,51 +82,16 @@ function movePlayer(currentPlayerPos,  nextPlayerPos)
     currentPlayerPos.x = nextPlayerPos.x;
     currentPlayerPos.y = nextPlayerPos.y;
    
-    
-
-    
-
-    // //Removing the "empty space" for the nextPlayerPosTag
-    // nextPlayerPosTag.removeChild(nextPlayerStringTag);
-
-    
-
-    // //Adding the image to the nextPlayerPos
-    // nextPlayerPosTag.appendChild(currentPlayerImgTag);
-
-    //Adding the "empty space" for space-tile to the tag we left
-
-    // HSHS
-    // if (currTileClassIsG)
-    // {
-    //     let goalArea = document.createTextNode("G");
-    //     currentPlayerPosTag.appendChild(goalArea);
-        
-    // } else // Tile class is " "
-    // {
-    //     let spaceArea = document.createTextNode(" ");
-    //     currentPlayerPosTag.appendChild(spaceArea);
-    // }
-    
    
-    // // Update next player position - class tags
-    // nextPlayerPosTag.classList.add("entity-player");
-    // console.log(nextPlayerPosTag);
-    
-    // //Update the new current position for player. 
-    // currentPlayerPos.x = nextPlayerPos.x;
-    // currentPlayerPos.y = nextPlayerPos.y;
 }
 // Manage the moves on the block
 function moveBlock(currentBlockPos,  nextBlockPos)
 {
-    console.log("moveBlock: started");
-    console.log("moveBlock: currentBlockPos = " + currentBlockPos);
-    console.log("moveBlock: nextBlockPos = " + nextBlockPos);
+    // console.log("moveBlock: started");
+    // console.log("moveBlock: currentBlockPos = " + currentBlockPos);
+    // console.log("moveBlock: nextBlockPos = " + nextBlockPos);
     let originalTileClassIsGforCurrentPos = checkIfOriginalTileClassIsGoal(currentBlockPos);
     let originalTileClassIsGforNextPos = checkIfOriginalTileClassIsGoal(nextBlockPos);
-    // console.log("moveBlock: originalTileClassIsGforCurrentPos = " + originalTileClassIsGforCurrentPos);
-    // console.log("moveBlock: originalTileClassIsGforNextPos = " + originalTileClassIsGforNextPos);
 
     // ************************* Current Position updates **********************************
 
@@ -169,21 +130,16 @@ function moveBlock(currentBlockPos,  nextBlockPos)
     nextBlockPosTag.removeChild(nextBlockStringTag);
     nextBlockPosTag.appendChild(currentBlockImgTag);
 
-    console.log("nextBlockPosTag:");
-    console.log(nextBlockPosTag);
-    console.log("nextBlockStringTag:");
-    console.log(nextBlockStringTag);
-    
     // Update next block position - class tags
     if (originalTileClassIsGforNextPos) // Tile class is "G"
     {
-        console.log("Removing tile-goal");
+        // console.log("Removing tile-goal");
         nextBlockPosTag.classList.remove("tile-goal");
     }
     else // Tile class is " "
     {
         nextBlockPosTag.classList.remove("tile-space");
-        console.log("Removing tile-space");
+        // console.log("Removing tile-space");
     }   
     nextBlockPosTag.classList.add("entity-block");
     
@@ -192,15 +148,11 @@ function moveBlock(currentBlockPos,  nextBlockPos)
     currentBlockPos.y = nextBlockPos.y;
 }
 
-// Check if next move is possible
-
 
 // Check if next move is a wall or not
 function movePlayerIfPossible(currentPlayerPos, nextPlayerPos)
 {
-    function movePlayerIfPossible(currentPlayerPos, nextPlayerPos)
-    {}
-    console.log("movePlayerIfPossible started");
+    // console.log("movePlayerIfPossible started");
     let nextPlayerPosTag = document.getElementById("x" + nextPlayerPos.x + "y" + nextPlayerPos.y);
     let tileClassName = nextPlayerPosTag.classList[1];
     let blockWasPossibleToMove = false;
@@ -211,11 +163,11 @@ function movePlayerIfPossible(currentPlayerPos, nextPlayerPos)
             // Do nothing. Same position for player
             break;
         case "tile-space":
-            console.log("movePlayerIfPossible - moving to space");
+            // console.log("movePlayerIfPossible - moving to space");
             movePlayer(currentPlayerPos, nextPlayerPos);
             break;
         case "tile-goal":
-            console.log("movePlayerIfPossible - moving to goal");
+            // console.log("movePlayerIfPossible - moving to goal");
             movePlayer(currentPlayerPos, nextPlayerPos);
             break;  
         case "entity-player":
@@ -232,26 +184,23 @@ function movePlayerIfPossible(currentPlayerPos, nextPlayerPos)
 
             if (blockWasPossibleToMove)
             {
-                console.log("movePlayerIfPossible - block was possible to move");
+                // console.log("movePlayerIfPossible - block was possible to move");
                 movePlayer(currentPlayerPos, nextPlayerPos);
             }
             else
             {
                 //Not possible. Do nothing
-                console.log("movePlayerIfPossible - block was NOT possible to move");
+                // console.log("movePlayerIfPossible - block was NOT possible to move");
             }
             break;      
         default:
-            console.log("movePlayerIfPossible - something is wrong!");
+            // console.log("movePlayerIfPossible - something is wrong!");
             break;
     }
 }
 
 function moveBlockIfPossible(currentBlockPos, nextBlockPos)
 {
-    // console.log("moveBlockIfPossible started")
-    // console.log(currentBlockPos);
-    // console.log(nextBlockPos);
     let nextBlockPosTag = document.getElementById("x" + nextBlockPos.x + "y" + nextBlockPos.y);
     let tileClassName = nextBlockPosTag.classList[1];
     let blockWasPossibleToMove = false;
@@ -259,27 +208,26 @@ function moveBlockIfPossible(currentBlockPos, nextBlockPos)
     switch (tileClassName)
     {
         case "tile-wall":
-            // console.log("moveBlockIfPossible - moving to wall (not possible)");
             // Do nothing. The block cannot be moved through a wall
             blockWasPossibleToMove = false
             break;
         case "tile-space":
-            console.log("moveBlockIfPossible - moving to space");
+            // console.log("moveBlockIfPossible - moving to space");
             moveBlock(currentBlockPos, nextBlockPos);
             blockWasPossibleToMove = true;
             break;
         case "tile-goal":
-            console.log("moveBlockIfPossible - moving to goal");
+            // console.log("moveBlockIfPossible - moving to goal");
             moveBlock(currentBlockPos, nextBlockPos);
             blockWasPossibleToMove = true;
             break;  
         case "entity-player":
-            console.log("moveBlockIfPossible - moving to player (not possible)");
+            // console.log("moveBlockIfPossible - moving to player (not possible)");
             // Do nothing. The block cannot move to the player's position
             blockWasPossibleToMove = false
             break;
         case "entity-block":
-            console.log("moveBlockIfPossible - moving to block (not possible)");
+            // console.log("moveBlockIfPossible - moving to block (not possible)");
             // Do nothing. The block cannot push another block
             blockWasPossibleToMove = false
             break;    
@@ -343,7 +291,7 @@ function addAllTileElements()
                 goal.id = "x" + j + "y" + i;
                 tileMap.appendChild(goal);
                 var goalArea = document.createTextNode(tileMap01.mapGrid[i][j]);
-                console.log(goal.id);
+                // console.log(goal.id);
                 goal.appendChild(goalArea);
             }
 
