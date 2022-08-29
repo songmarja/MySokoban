@@ -314,7 +314,7 @@ function addAllTileElements()
 
 function arrowKeys(e)
 {
-    e.preventDefault;
+    e.preventDefault();
     console.log(e);
     switch (e.key)
     {
